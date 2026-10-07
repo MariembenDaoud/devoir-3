@@ -1,0 +1,37 @@
+<div class="container">
+  <h2 class="mb-4">Ajouter un Animal</h2>
+
+  <form>
+    <div class="mb-3 col-sm-4">
+      <label>ID Animal</label>
+      <input type="number" [(ngModel)]="newAnimal.idAnimal" name="idAnimal" class="form-control" />
+    </div>
+
+    <div class="mb-3 col-sm-6">
+      <label>Nom Animal</label>
+      <input type="text" [(ngModel)]="newAnimal.nomAnimal" name="nomAnimal" class="form-control" />
+    </div>
+
+    <div class="mb-3 col-sm-6">
+      <label>Espèce</label>
+      <input type="text" [(ngModel)]="newAnimal.espece" name="espece" class="form-control" />
+    </div>
+
+    <div class="mb-3 col-sm-4">
+      <label>Âge</label>
+      <input type="number" [(ngModel)]="newAnimal.age" name="age" class="form-control" />
+    </div>
+
+    <div class="mb-3 col-sm-4">
+      <label>Date de naissance</label>
+      <input
+        type="date"
+        [(ngModel)]="newAnimal.dateNaissance"
+        name="dateNaissance"
+        class="form-control"
+      />
+    </div>
+
+    <button type="button" (click)="addAnimal()" class="btn btn-success">Ajouter</button>
+  </form>
+</div>
