@@ -1,37 +1,80 @@
-<div class="container">
-  <h2 class="mb-4">Ajouter un Animal</h2>
-
-  <form>
-    <div class="mb-3 col-sm-4">
-      <label>ID Animal</label>
-      <input type="number" [(ngModel)]="newAnimal.idAnimal" name="idAnimal" class="form-control" />
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header">
+      <h2 class="mb-0">Ajouter un animal</h2>
     </div>
 
-    <div class="mb-3 col-sm-6">
-      <label>Nom Animal</label>
-      <input type="text" [(ngModel)]="newAnimal.nomAnimal" name="nomAnimal" class="form-control" />
-    </div>
+    <div class="card-body">
+      <form #animalForm="ngForm" (ngSubmit)="addAnimal()">
+        <div class="mb-3">
+          <label for="idAnimal" class="form-label">ID Animal</label>
+          <input
+            id="idAnimal"
+            type="number"
+            class="form-control"
+            [(ngModel)]="newAnimal.idAnimal"
+            name="idAnimal"
+            min="1"
+            required
+          />
+        </div>
 
-    <div class="mb-3 col-sm-6">
-      <label>Espèce</label>
-      <input type="text" [(ngModel)]="newAnimal.espece" name="espece" class="form-control" />
-    </div>
+        <div class="mb-3">
+          <label for="nomAnimal" class="form-label">Nom Animal</label>
+          <input
+            id="nomAnimal"
+            type="text"
+            class="form-control"
+            [(ngModel)]="newAnimal.nomAnimal"
+            name="nomAnimal"
+            required
+          />
+        </div>
 
-    <div class="mb-3 col-sm-4">
-      <label>Âge</label>
-      <input type="number" [(ngModel)]="newAnimal.age" name="age" class="form-control" />
-    </div>
+        <div class="mb-3">
+          <label for="espece" class="form-label">Espèce</label>
+          <input
+            id="espece"
+            type="text"
+            class="form-control"
+            [(ngModel)]="newAnimal.espece"
+            name="espece"
+            required
+          />
+        </div>
 
-    <div class="mb-3 col-sm-4">
-      <label>Date de naissance</label>
-      <input
-        type="date"
-        [(ngModel)]="newAnimal.dateNaissance"
-        name="dateNaissance"
-        class="form-control"
-      />
-    </div>
+        <div class="mb-3">
+          <label for="age" class="form-label">Âge</label>
+          <input
+            id="age"
+            type="number"
+            class="form-control"
+            [(ngModel)]="newAnimal.age"
+            name="age"
+            min="0"
+            required
+          />
+        </div>
 
-    <button type="button" (click)="addAnimal()" class="btn btn-success">Ajouter</button>
-  </form>
+        <div class="mb-3">
+          <label for="dateNaissance" class="form-label"> Date de naissance </label>
+          <input
+            id="dateNaissance"
+            type="date"
+            class="form-control"
+            [ngModel]="newAnimal.dateNaissance | date: 'yyyy-MM-dd'"
+            (ngModelChange)="changerDateNaissance($event)"
+            name="dateNaissance"
+            required
+          />
+        </div>
+
+        <button type="submit" class="btn btn-success me-2" [disabled]="animalForm.invalid">
+          Ajouter
+        </button>
+
+        <a routerLink="/animaux" class="btn btn-secondary"> Retour à la liste </a>
+      </form>
+    </div>
+  </div>
 </div>
